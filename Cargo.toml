@@ -4,3 +4,7 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
+regex = "1.11.1"
+reqwest = "0.12.9"
+scraper = "0.21.0"
+tokio = "1.41.1"
