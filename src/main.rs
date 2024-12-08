@@ -1,9 +1,4 @@
-mod cache;
-mod network;
-mod search;
-
-use cache::Cache;
-use search::SearchEngine;
+use search_engine::{cache::Cache, search::SearchEngine};
 
 #[tokio::main]
 async fn main() {
