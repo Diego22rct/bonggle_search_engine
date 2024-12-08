@@ -17,11 +17,10 @@ impl SearchEngine {
     }
 
     pub fn add_document(&mut self, document: String) {
-        let doc_id = self.documents.len();
         self.documents.push(document.clone());
     }
 
-    fn search(&self, query: &str) -> Vec<String> {
+    pub fn search(&self, query: &str) -> Vec<String> {
         if let Some(doc_ids) = self.index.get(&query.to_lowercase()) {
             doc_ids
                 .iter()
