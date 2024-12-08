@@ -44,4 +44,8 @@ impl SearchEngine {
 
         filtered_results
     }
+
+    pub fn get_documents(&self) -> &Vec<String> {
+        &self.documents
+    }
 }
