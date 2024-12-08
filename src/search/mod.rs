@@ -31,6 +31,15 @@ impl SearchEngine {
         }
     }
 
+    /// Searches for a word within HTML tags in the documents.
+    ///
+    /// # Arguments
+    ///
+    /// * `word` - A string slice containing the word to search for within HTML tags.
+    ///
+    /// # Returns
+    ///
+    /// A vector of strings containing the HTML elements that match the word.
     pub fn search_in_html(&self, word: &str) -> Vec<String> {
         let re = Regex::new(&format!(r"(?i)<[^>]*>{}[^<]*</[^>]*>", word)).unwrap();
         let mut filtered_results = Vec::new();
@@ -42,6 +51,17 @@ impl SearchEngine {
         }
 
         filtered_results
+    }
+
+    pub fn index_document(&mut self, document: &str) {
+        let id = self.documents.len();
+        let words = document.split_whitespace();
+
+        for word in words {
+            let word = word.to_lowercase();
+            let doc_ids = self.index.entry(word).or_insert(Vec::new());
+            doc_ids.push(id);
+        }
     }
 
     pub fn get_documents(&self) -> &Vec<String> {
