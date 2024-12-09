@@ -2,10 +2,13 @@ use std::collections::HashMap;
 
 use regex::Regex;
 
+use crate::network::Network;
+
 #[derive(Debug)]
 pub struct SearchEngine {
     index: HashMap<String, Vec<usize>>,
     documents: Vec<String>,
+    network_queue: Network,
 }
 
 impl SearchEngine {
@@ -13,6 +16,7 @@ impl SearchEngine {
         Self {
             index: HashMap::new(),
             documents: Vec::new(),
+            network_queue: Network::new(),
         }
     }
 

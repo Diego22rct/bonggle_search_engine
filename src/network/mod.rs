@@ -1,22 +1,31 @@
 use std::collections::VecDeque;
 
 #[derive(Debug)]
-struct Network {
+pub struct Network {
     queue: VecDeque<i32>,
 }
 
 impl Network {
-    fn new() -> Network {
+    pub fn new() -> Network {
         Network {
             queue: VecDeque::new(),
         }
     }
 
-    fn add_to_nt_queue(&mut self, value: i32) {
+    pub fn add_to_nt_queue(&mut self, value: i32) {
+        if self.queue.contains(&value) {
+            return;
+        }
         self.queue.push_back(value);
     }
 
-    fn remove_from_nt_queue(&mut self) -> Option<i32> {
-        self.queue.pop_front()
+    pub fn get_nt_queue(&self) -> &VecDeque<i32> {
+        &self.queue
+    }
+
+    pub fn remove_from_nt_queue(&mut self, value: i32) {
+        if let Some(pos) = self.queue.iter().position(|&x| x == value) {
+            self.queue.remove(pos);
+        }
     }
 }

@@ -1,4 +1,4 @@
-use search_engine::{cache::Cache, search::SearchEngine};
+use search_engine::{cache::Cache, network::Network, search::SearchEngine};
 
 #[tokio::main]
 async fn main() {
